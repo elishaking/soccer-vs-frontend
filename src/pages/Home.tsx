@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import "./Home.scss";
 import { TextButton } from "../components/Buttons";
 import { TextInput } from "../components/Inputs";
 
@@ -16,7 +18,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <header>
           <TextInput
             type="text"

@@ -1,0 +1,14 @@
+.home {
+  height: 100vh;
+  padding: 3em 10vw;
+  background-color: #9236d9;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      width: 20vw;
+    }
+  }
+}
