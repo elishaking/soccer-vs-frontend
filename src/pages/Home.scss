@@ -68,12 +68,18 @@
 
   .performance {
     text-align: center;
-    .values {
-      display: flex;
-      justify-content: center;
+    color: white;
 
-      .performance-bar {
-        margin: 0 0.7em;
+    .score {
+      margin-bottom: 2em;
+
+      .values {
+        display: flex;
+        justify-content: center;
+
+        .performance-bar {
+          margin: 0 0.3em;
+        }
       }
     }
   }
