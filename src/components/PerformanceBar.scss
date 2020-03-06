@@ -1,0 +1,19 @@
+.performance-bar {
+  height: 3px;
+  position: relative;
+
+  div {
+    height: 100%;
+    border-radius: 30em;
+  }
+
+  .container {
+    background-color: #361382;
+  }
+
+  .value {
+    position: absolute;
+    bottom: 0;
+    transition: 1.3s ease-out;
+  }
+}

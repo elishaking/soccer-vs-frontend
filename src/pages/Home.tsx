@@ -4,13 +4,15 @@ import "./Home.scss";
 // import { TextButton } from "../components/Buttons";
 import { TextInput } from "../components/Inputs";
 
-import Player, { Ronaldo, Messi } from "../models/player";
+import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
+import PerformanceBar from "../components/PerformanceBar";
 
 interface HomeState {
   player1Name: string;
   player2Name: string;
   player1: Player | undefined;
   player2: Player | undefined;
+  resize: number;
 }
 
 export default class Home extends Component<any, Readonly<HomeState>> {
@@ -18,12 +20,43 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     player1Name: "",
     player2Name: "",
     player1: undefined,
-    player2: undefined
+    player2: undefined,
+    resize: Number.MIN_SAFE_INTEGER
   };
+
+  componentDidMount() {
+    window.addEventListener("resize", () => {
+      this.setState({
+        resize: this.state.resize + 1
+      });
+    });
+  }
 
   onChange = (e: any) => {
     this.setState({
       player1Name: e.target.value
+    });
+  };
+
+  renderPerformance = (
+    performance1: PlayerPerformance,
+    performance2: PlayerPerformance
+  ) => {
+    return Object.keys(performance1).map((perfKey: string, index) => {
+      const [value1, value2] = [performance1[perfKey], performance2[perfKey]];
+      const { resize } = this.state;
+
+      return (
+        <div key={index} className="score">
+          <p className="title">{perfKey.toUpperCase()}</p>
+          <div className="values">
+            <span>{value1}</span>
+            <PerformanceBar value={value1} resize={resize} />
+            <PerformanceBar right={false} value={value2} resize={resize} />
+            <span>{value2}</span>
+          </div>
+        </div>
+      );
     });
   };
 
@@ -66,6 +99,10 @@ export default class Home extends Component<any, Readonly<HomeState>> {
             </div>
             <img src={player2.headshot} alt="Player2" />
           </div>
+        </div>
+
+        <div className="performance">
+          {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
         </div>
       </div>
     );
