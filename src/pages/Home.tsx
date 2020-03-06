@@ -4,24 +4,31 @@ import "./Home.scss";
 import { TextButton } from "../components/Buttons";
 import { TextInput } from "../components/Inputs";
 
-import Player from "../models/player";
+import Player, { Ronaldo } from "../models/player";
 
-export default class Home extends Component {
+interface HomeState {
+  player1Name: string;
+  player2Name: string;
+  player1: Player | undefined;
+  player2: Player | undefined;
+}
+
+export default class Home extends Component<any, Readonly<HomeState>> {
   state = {
     player1Name: "",
     player2Name: "",
-    player1: {} as Player,
-    player2: {} as Player
+    player1: undefined,
+    player2: undefined
   };
 
   onChange = (e: any) => {
     this.setState({
-      [e.target.name]: e.target.value
+      player1Name: e.target.value
     });
   };
 
   render() {
-    const { player1, player2 } = this.state;
+    const { player1 = Ronaldo, player2 = Ronaldo } = this.state;
 
     return (
       <div className="home">
@@ -44,14 +51,14 @@ export default class Home extends Component {
         <div className="vs">
           <div className="left">
             <h1>{player1.name}</h1>
-            <h3>{player1.club}</h3>
-            <img src={player1.imageUrl} alt="Player1" />
+            <h3>{player1.club.name}</h3>
+            <img src={player1.headshot} alt="Player1" />
           </div>
 
           <div className="right">
             <h1>{player2.name}</h1>
-            <h3>{player2.club}</h3>
-            <img src={player2.imageUrl} alt="Player2" />
+            <h3>{player2.club.name}</h3>
+            <img src={player2.headshot} alt="Player2" />
           </div>
         </div>
       </div>
