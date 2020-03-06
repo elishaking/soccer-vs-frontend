@@ -70,7 +70,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         </div>
 
         <div className="performance">
-          <PerformanceBar />
+          <PerformanceBar value={70} />
         </div>
       </div>
     );
