@@ -5,6 +5,7 @@ import "./Home.scss";
 import { TextInput } from "../components/Inputs";
 
 import Player, { Ronaldo, Messi } from "../models/player";
+import PerformanceBar from "../components/PerformanceBar";
 
 interface HomeState {
   player1Name: string;
@@ -66,6 +67,10 @@ export default class Home extends Component<any, Readonly<HomeState>> {
             </div>
             <img src={player2.headshot} alt="Player2" />
           </div>
+        </div>
+
+        <div className="performance">
+          <PerformanceBar />
         </div>
       </div>
     );

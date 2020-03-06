@@ -1,0 +1,20 @@
+.performance-bar {
+  height: 5px;
+  position: relative;
+
+  div {
+    height: 100%;
+    border-radius: 30em;
+  }
+
+  .container {
+    background-color: #491aae;
+  }
+
+  .value {
+    position: absolute;
+    bottom: 0;
+    background-color: #d43861;
+    width: 30%;
+  }
+}
