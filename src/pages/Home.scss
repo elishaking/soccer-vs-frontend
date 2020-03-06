@@ -1,5 +1,5 @@
 .home {
-  height: 100vh;
+  // height: 100vh;
   padding: 3em 10vw;
   background-color: #9236d9;
   background-image: url(../assets/img/stadium.jpg);
@@ -62,6 +62,18 @@
 
       img {
         height: 70px;
+      }
+    }
+  }
+
+  .performance {
+    text-align: center;
+    .values {
+      display: flex;
+      justify-content: center;
+
+      .performance-bar {
+        margin: 0 0.7em;
       }
     }
   }

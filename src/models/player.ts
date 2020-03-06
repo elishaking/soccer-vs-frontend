@@ -23,22 +23,25 @@ export default interface Player {
   birthdate: string;
   foot: string;
   rating: number;
-  mainDetails: {
-    acceleration: number;
-    aggression: number;
-    agility: number;
-    balance: number;
-    ballcontrol: number;
-    skillMoves: number;
-    crossing: number;
-    curve: number;
-    dribbling: number;
-    freekickaccuracy: number;
-    composure: number;
-    finishing: number;
-  };
+  mainDetails: PlayerPerformance;
   gk: any;
   more: any;
+}
+
+export interface PlayerPerformance {
+  [key: string]: number;
+  acceleration: number;
+  aggression: number;
+  agility: number;
+  balance: number;
+  ballcontrol: number;
+  skillMoves: number;
+  crossing: number;
+  curve: number;
+  dribbling: number;
+  freekickaccuracy: number;
+  composure: number;
+  finishing: number;
 }
 
 export const Ronaldo: Player = {

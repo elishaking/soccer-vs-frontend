@@ -4,7 +4,7 @@ import "./Home.scss";
 // import { TextButton } from "../components/Buttons";
 import { TextInput } from "../components/Inputs";
 
-import Player, { Ronaldo, Messi } from "../models/player";
+import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
 import PerformanceBar from "../components/PerformanceBar";
 
 interface HomeState {
@@ -25,6 +25,25 @@ export default class Home extends Component<any, Readonly<HomeState>> {
   onChange = (e: any) => {
     this.setState({
       player1Name: e.target.value
+    });
+  };
+
+  renderPerformance = (
+    performance1: PlayerPerformance,
+    performance2: PlayerPerformance
+  ) => {
+    return Object.keys(performance1).map((perfKey: string, index) => {
+      const [value1, value2] = [performance1[perfKey], performance2[perfKey]];
+
+      return (
+        <div key={index} className="score">
+          <p className="title">{perfKey.toUpperCase()}</p>
+          <div className="values">
+            <PerformanceBar value={value1} />
+            <PerformanceBar right={false} value={value2} />
+          </div>
+        </div>
+      );
     });
   };
 
@@ -70,7 +89,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         </div>
 
         <div className="performance">
-          <PerformanceBar value={70} />
+          {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
         </div>
       </div>
     );
