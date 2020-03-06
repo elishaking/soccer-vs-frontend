@@ -51,13 +51,19 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         <div className="vs">
           <div className="left">
             <h1>{player1.name}</h1>
-            <h3>{player1.club.name}</h3>
+            <div className="club">
+              <img src={player1.club.imageUrl} alt="Club" />
+              <h3>{player1.club.name}</h3>
+            </div>
             <img src={player1.headshot} alt="Player1" />
           </div>
 
           <div className="right">
             <h1>{player2.name}</h1>
-            <h3>{player2.club.name}</h3>
+            <div className="club">
+              <h3>{player2.club.name}</h3>
+              <img src={player2.club.imageUrl} alt="Club" />
+            </div>
             <img src={player2.headshot} alt="Player2" />
           </div>
         </div>

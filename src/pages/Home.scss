@@ -38,6 +38,23 @@
 
     .right {
       text-align: end;
+
+      .club {
+        justify-content: end;
+      }
+    }
+
+    .club {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        margin: 0 1em;
+      }
+
+      img {
+        height: 70px;
+      }
     }
   }
 }
