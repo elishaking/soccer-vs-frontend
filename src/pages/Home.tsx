@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "./Home.scss";
-import { TextButton } from "../components/Buttons";
+// import { TextButton } from "../components/Buttons";
 import { TextInput } from "../components/Inputs";
 
 import Player, { Ronaldo, Messi } from "../models/player";
