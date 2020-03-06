@@ -6,6 +6,7 @@ import { TextInput } from "../components/Inputs";
 
 import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
 import PerformanceBar from "../components/PerformanceBar";
+import PlayerInfo from "../components/PlayerInfo";
 
 interface HomeState {
   player1Name: string;
@@ -80,6 +81,8 @@ export default class Home extends Component<any, Readonly<HomeState>> {
             onChange={this.onChange}
           />
         </header>
+
+        <PlayerInfo player={player1} />
 
         <div className="vs">
           <div className="left">
