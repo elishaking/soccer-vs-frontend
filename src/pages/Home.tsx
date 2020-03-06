@@ -12,6 +12,7 @@ interface HomeState {
   player2Name: string;
   player1: Player | undefined;
   player2: Player | undefined;
+  resize: number;
 }
 
 export default class Home extends Component<any, Readonly<HomeState>> {
@@ -19,8 +20,17 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     player1Name: "",
     player2Name: "",
     player1: undefined,
-    player2: undefined
+    player2: undefined,
+    resize: Number.MIN_SAFE_INTEGER
   };
+
+  componentDidMount() {
+    window.addEventListener("resize", () => {
+      this.setState({
+        resize: this.state.resize + 1
+      });
+    });
+  }
 
   onChange = (e: any) => {
     this.setState({
@@ -34,14 +44,15 @@ export default class Home extends Component<any, Readonly<HomeState>> {
   ) => {
     return Object.keys(performance1).map((perfKey: string, index) => {
       const [value1, value2] = [performance1[perfKey], performance2[perfKey]];
+      const { resize } = this.state;
 
       return (
         <div key={index} className="score">
           <p className="title">{perfKey.toUpperCase()}</p>
           <div className="values">
             <span>{value1}</span>
-            <PerformanceBar value={value1} />
-            <PerformanceBar right={false} value={value2} />
+            <PerformanceBar value={value1} resize={resize} />
+            <PerformanceBar right={false} value={value2} resize={resize} />
             <span>{value2}</span>
           </div>
         </div>

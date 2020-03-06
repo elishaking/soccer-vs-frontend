@@ -4,18 +4,20 @@ import "./PerformanceBar.scss";
 interface PerformanceBarProps {
   right?: boolean;
   value: number;
+  resize: number;
 }
 
 export default function PerformanceBar({
   right = true,
-  value
+  value,
+  resize
 }: PerformanceBarProps) {
   let ref: React.RefObject<HTMLDivElement> = React.createRef();
   const [valueWidth, setValueWidth] = useState(0);
 
   useEffect(() => {
     setValueWidth((value / 100) * (ref.current?.clientWidth as number));
-  }, [ref, value]);
+  }, [ref, value, resize]);
 
   return (
     <div
