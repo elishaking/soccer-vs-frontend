@@ -115,3 +115,78 @@ export const Ronaldo: Player = {
   positionFull: "Striker",
   rating: 99
 };
+
+export const Messi = {
+  league: {
+    imageUrls: {
+      dark:
+        "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/leagueLogos/dark/53.png",
+      light:
+        "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/leagueLogos/light/53.png"
+    },
+    name: "LaLiga Santander"
+  },
+  nation: {
+    imageUrl:
+      "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/flags/list/52.png",
+    name: "Argentina"
+  },
+  club: {
+    imageUrl:
+      "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/clubs/dark/241.png",
+    name: "FC Barcelona"
+  },
+  headshot:
+    "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/portraits/158023.png",
+  position: "CF",
+  height: 170,
+  weight: 72,
+  birthdate: "06/24/1987",
+  foot: "Left",
+  mainDetails: {
+    acceleration: 99,
+    aggression: 66,
+    agility: 93,
+    balance: 97,
+    ballcontrol: 99,
+    crossing: 85,
+    curve: 99,
+    dribbling: 99,
+    finishing: 99,
+    freekickaccuracy: 99,
+    composure: 99,
+    skillMoves: 4
+  },
+  gk: {
+    gkdiving: 6,
+    gkhandling: 11,
+    gkkicking: 15,
+    gkpositioning: 14,
+    gkreflexes: 8
+  },
+  more: {
+    headingaccuracy: 98,
+    interceptions: 30,
+    jumping: 94,
+    longpassing: 96,
+    longshots: 99,
+    marking: 46,
+    penalties: 81,
+    positioning: 99,
+    potential: 94,
+    reactions: 97,
+    shortpassing: 99,
+    shotpower: 92,
+    slidingtackle: 36,
+    sprintspeed: 94,
+    standingtackle: 39,
+    stamina: 99,
+    strength: 82,
+    vision: 99,
+    volleys: 93,
+    weakFoot: 4
+  },
+  name: "Messi",
+  positionFull: "Centre Forward",
+  rating: 99
+};

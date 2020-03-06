@@ -4,7 +4,7 @@ import "./Home.scss";
 import { TextButton } from "../components/Buttons";
 import { TextInput } from "../components/Inputs";
 
-import Player, { Ronaldo } from "../models/player";
+import Player, { Ronaldo, Messi } from "../models/player";
 
 interface HomeState {
   player1Name: string;
@@ -28,7 +28,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
   };
 
   render() {
-    const { player1 = Ronaldo, player2 = Ronaldo } = this.state;
+    const { player1 = Ronaldo, player2 = Messi } = this.state;
 
     return (
       <div className="home">
