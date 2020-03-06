@@ -34,7 +34,7 @@ export default function PerformanceBar({
           right: right ? 0 : undefined,
           left: right ? undefined : 0,
           width: valueWidth,
-          backgroundColor: right ? "#d43861" : "#7455e2"
+          backgroundColor: right ? "#d43861" : "rgb(182, 166, 236)"
         }}
       ></div>
     </div>
