@@ -16,6 +16,21 @@
     display: flex;
     justify-content: space-between;
 
+    h1,
+    h3 {
+      color: white;
+    }
+
+    h1 {
+      font-size: 230%;
+      font-weight: 900;
+    }
+
+    h3 {
+      opacity: 0.7;
+      font-weight: lighter;
+    }
+
     .left,
     .right {
       width: 40vw;
