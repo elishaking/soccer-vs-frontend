@@ -33,7 +33,8 @@ export default function PerformanceBar({
         style={{
           right: right ? 0 : undefined,
           left: right ? undefined : 0,
-          width: valueWidth
+          width: valueWidth,
+          backgroundColor: right ? "#d43861" : "#7455e2"
         }}
       ></div>
     </div>
