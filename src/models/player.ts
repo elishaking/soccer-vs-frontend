@@ -190,3 +190,84 @@ export const Messi = {
   positionFull: "Centre Forward",
   rating: 99
 };
+
+/**
+ * Converts response data to `Player` type
+ * @param data
+ */
+export function convertDataToPlayer(data: any[]) {
+  const players: Player[] = [];
+  data.forEach((player, i) => {
+    players[i] = {
+      league: {
+        imageUrls: {
+          dark: player.league.imageUrls.dark,
+          light: player.league.imageUrls.light
+        },
+        name: player.league.name
+      },
+      nation: {
+        imageUrl: player.nation.imageUrls.large,
+        name: player.nation.name
+      },
+      club: {
+        imageUrl: player.club.imageUrls.dark.large,
+        name: player.club.name
+      },
+      headshot: player.headshot.imgUrl,
+      position: player.position,
+      height: player.height,
+      weight: player.weight,
+      birthdate: player.birthdate,
+      foot: player.foot,
+      mainDetails: {
+        acceleration: player.acceleration,
+        aggression: player.aggression,
+        agility: player.agility,
+        balance: player.balance,
+        ballcontrol: player.ballcontrol,
+        crossing: player.crossing,
+        curve: player.curve,
+        dribbling: player.dribbling,
+        finishing: player.finishing,
+        freekickaccuracy: player.freekickaccuracy,
+        composure: player.composure,
+        skillMoves: player.skillMoves
+      },
+      gk: {
+        gkdiving: player.gkdiving,
+        gkhandling: player.gkhandling,
+        gkkicking: player.gkkicking,
+        gkpositioning: player.gkpositioning,
+        gkreflexes: player.gkreflexes
+      },
+      more: {
+        headingaccuracy: player.headingaccuracy,
+        interceptions: player.interceptions,
+        jumping: player.jumping,
+        longpassing: player.longpassing,
+        longshots: player.longshots,
+        marking: player.marking,
+        penalties: player.penalties,
+        positioning: player.positioning,
+        potential: player.potential,
+        reactions: player.reactions,
+        shortpassing: player.shortpassing,
+        shotpower: player.shotpower,
+        slidingtackle: player.slidingtackle,
+        sprintspeed: player.sprintspeed,
+        standingtackle: player.standingtackle,
+        stamina: player.stamina,
+        strength: player.strength,
+        vision: player.vision,
+        volleys: player.volleys,
+        weakFoot: player.weakFoot
+      },
+      name: player.name,
+      positionFull: player.positionFull,
+      rating: player.rating
+    };
+  });
+
+  return players;
+}
