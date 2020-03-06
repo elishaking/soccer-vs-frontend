@@ -116,7 +116,7 @@ export const Ronaldo: Player = {
   rating: 99
 };
 
-export const Messi = {
+export const Messi: Player = {
   league: {
     imageUrls: {
       dark:

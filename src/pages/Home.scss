@@ -11,4 +11,18 @@
       width: 20vw;
     }
   }
+
+  .vs {
+    display: flex;
+    justify-content: space-between;
+
+    .left,
+    .right {
+      width: 40vw;
+    }
+
+    .right {
+      text-align: end;
+    }
+  }
 }
