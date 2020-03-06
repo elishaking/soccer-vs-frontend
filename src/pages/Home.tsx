@@ -39,8 +39,10 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         <div key={index} className="score">
           <p className="title">{perfKey.toUpperCase()}</p>
           <div className="values">
+            <span>{value1}</span>
             <PerformanceBar value={value1} />
             <PerformanceBar right={false} value={value2} />
+            <span>{value2}</span>
           </div>
         </div>
       );
