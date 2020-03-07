@@ -6,6 +6,7 @@ import { TextInput } from "../components/Inputs";
 
 import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
 import PerformanceBar from "../components/PerformanceBar";
+import PlayerInfo from "../components/PlayerInfo";
 
 interface HomeState {
   player1Name: string;
@@ -30,6 +31,10 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         resize: this.state.resize + 1
       });
     });
+  }
+
+  componentWillMount() {
+    window.removeEventListener("resize", () => {});
   }
 
   onChange = (e: any) => {
@@ -101,8 +106,22 @@ export default class Home extends Component<any, Readonly<HomeState>> {
           </div>
         </div>
 
-        <div className="performance">
-          {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
+        <div className="combine">
+          <PlayerInfo
+            player={player1}
+            style={{
+              marginRight: "2em"
+            }}
+          />
+          <div className="performance">
+            {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
+          </div>
+          <PlayerInfo
+            player={player2}
+            style={{
+              marginLeft: "2em"
+            }}
+          />
         </div>
       </div>
     );
