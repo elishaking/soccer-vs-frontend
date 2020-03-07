@@ -14,8 +14,12 @@
     justify-content: space-between;
     margin-bottom: 3em;
 
-    input {
-      width: 20vw;
+    .form {
+      display: flex;
+
+      input {
+        width: 20vw;
+      }
     }
   }
 

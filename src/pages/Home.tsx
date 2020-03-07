@@ -7,12 +7,16 @@ import { TextInput } from "../components/Inputs";
 import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
 import PerformanceBar from "../components/PerformanceBar";
 import PlayerInfo from "../components/PlayerInfo";
+import { searchPlayer } from "../api/search";
+import Spinner from "../components/Spinner";
 
 interface HomeState {
   player1Name: string;
   player2Name: string;
   player1: Player | undefined;
   player2: Player | undefined;
+  loadingPlayer1: boolean;
+  loadingPlayer2: boolean;
   resize: number;
   layoutOverflow: boolean;
 }
@@ -23,6 +27,8 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     player2Name: "",
     player1: undefined,
     player2: undefined,
+    loadingPlayer1: false,
+    loadingPlayer2: false,
     resize: Number.MIN_SAFE_INTEGER,
     layoutOverflow: false
   };
@@ -46,9 +52,15 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     window.removeEventListener("resize", () => {});
   }
 
-  onChange = (e: any) => {
+  onChange1 = (e: any) => {
     this.setState({
       player1Name: e.target.value
+    });
+  };
+
+  onChange2 = (e: any) => {
+    this.setState({
+      player2Name: e.target.value
     });
   };
 
@@ -74,25 +86,63 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     });
   };
 
+  onSubmit1 = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    this.setState({ loadingPlayer1: true });
+
+    searchPlayer(this.state.player1Name).then(player => {
+      if (player)
+        this.setState({ player1: player, resize: this.state.resize + 1 });
+
+      this.setState({ loadingPlayer1: false });
+    });
+  };
+
+  onSubmit2 = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    this.setState({ loadingPlayer2: true });
+
+    searchPlayer(this.state.player2Name).then(player => {
+      if (player)
+        this.setState({ player2: player, resize: this.state.resize + 1 });
+
+      this.setState({ loadingPlayer2: false });
+    });
+  };
+
   render() {
-    const { player1 = Ronaldo, player2 = Messi, layoutOverflow } = this.state;
+    const {
+      player1 = Ronaldo,
+      player2 = Messi,
+      layoutOverflow,
+      loadingPlayer1,
+      loadingPlayer2
+    } = this.state;
 
     return (
       <div className="home">
         <header>
-          <TextInput
-            type="text"
-            name="player1Name"
-            placeholder="Ronaldo"
-            onChange={this.onChange}
-          />
+          <form className="form" onSubmit={this.onSubmit1}>
+            <TextInput
+              type="text"
+              name="player1Name"
+              placeholder="Ronaldo"
+              onChange={this.onChange1}
+            />
+            {loadingPlayer1 && <Spinner />}
+          </form>
 
-          <TextInput
-            type="text"
-            name="player2Name"
-            placeholder="Messi"
-            onChange={this.onChange}
-          />
+          <form className="form" onSubmit={this.onSubmit2}>
+            <TextInput
+              type="text"
+              name="player2Name"
+              placeholder="Messi"
+              onChange={this.onChange2}
+            />
+            {loadingPlayer2 && <Spinner />}
+          </form>
         </header>
 
         <div className="vs">
