@@ -6,9 +6,10 @@ import { TextButton } from "./Buttons";
 
 interface PlayerInfoProps {
   player: Player;
+  style: React.CSSProperties;
 }
 
-export default function PlayerInfo({ player }: PlayerInfoProps) {
+export default function PlayerInfo({ player, style }: PlayerInfoProps) {
   const [expanded, setExpanded] = useState(false);
 
   const getAge = (birthDate: string) => {
@@ -22,7 +23,7 @@ export default function PlayerInfo({ player }: PlayerInfoProps) {
   };
 
   return (
-    <div className="player-info">
+    <div className="player-info" style={style}>
       <div className="info">
         <h3>WEIGHT</h3>
         <h2>
@@ -46,12 +47,14 @@ export default function PlayerInfo({ player }: PlayerInfoProps) {
 
       {expanded && (
         <div className="more">
-          <div className="info">
-            <h3>AGE</h3>
-            <h2>
-              {getAge(player.birthdate)} <span>years</span>
-            </h2>
-          </div>
+          {Object.keys(player.moreInfo).map((infoKey, index) => {
+            return (
+              <div key={index} className="info">
+                <h3>{infoKey.toUpperCase()}</h3>
+                <h2>{player.moreInfo[infoKey]}</h2>
+              </div>
+            );
+          })}
         </div>
       )}
 

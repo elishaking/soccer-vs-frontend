@@ -24,6 +24,7 @@ export default interface Player {
 }
 
 export interface PlayerInfo {
+  [key: string]: any;
   position: string;
   positionFull: string;
   height: number;
@@ -163,12 +164,12 @@ export const Messi: Player = {
     skillMoves: 4
   },
   moreInfo: {
-    positionFull: "Centre Forward",
-    rating: 99,
     position: "CF",
     height: 170,
     weight: 72,
-    foot: "Left"
+    foot: "Left",
+    positionFull: "Centre Forward",
+    rating: 99
   },
   more: {
     headingaccuracy: 98,

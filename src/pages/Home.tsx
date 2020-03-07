@@ -107,11 +107,21 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         </div>
 
         <div className="combine">
-          <PlayerInfo player={player1} />
+          <PlayerInfo
+            player={player1}
+            style={{
+              marginRight: "2em"
+            }}
+          />
           <div className="performance">
             {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
           </div>
-          <PlayerInfo player={player2} />
+          <PlayerInfo
+            player={player2}
+            style={{
+              marginLeft: "2em"
+            }}
+          />
         </div>
       </div>
     );
