@@ -23,7 +23,7 @@ export default function PerformanceBar({
     <div
       className="performance-bar"
       style={{
-        width: "30vw",
+        // width: "30vw",
         maxWidth: "300px"
       }}
       ref={ref}

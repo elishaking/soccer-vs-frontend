@@ -14,6 +14,7 @@ interface HomeState {
   player1: Player | undefined;
   player2: Player | undefined;
   resize: number;
+  layoutOverflow: boolean;
 }
 
 export default class Home extends Component<any, Readonly<HomeState>> {
@@ -22,13 +23,21 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     player2Name: "",
     player1: undefined,
     player2: undefined,
-    resize: Number.MIN_SAFE_INTEGER
+    resize: Number.MIN_SAFE_INTEGER,
+    layoutOverflow: false
   };
 
   componentDidMount() {
+    if (window.innerWidth <= 900) {
+      this.setState({ layoutOverflow: true });
+    }
+
     window.addEventListener("resize", () => {
+      const layoutOverflow = window.innerWidth <= 900 ? true : false;
+
       this.setState({
-        resize: this.state.resize + 1
+        resize: this.state.resize + 1,
+        layoutOverflow
       });
     });
   }
@@ -66,7 +75,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
   };
 
   render() {
-    const { player1 = Ronaldo, player2 = Messi } = this.state;
+    const { player1 = Ronaldo, player2 = Messi, layoutOverflow } = this.state;
 
     return (
       <div className="home">
@@ -106,23 +115,50 @@ export default class Home extends Component<any, Readonly<HomeState>> {
           </div>
         </div>
 
-        <div className="combine">
-          <PlayerInfo
-            player={player1}
-            style={{
-              marginRight: "2em"
-            }}
-          />
+        <div
+          className="combine"
+          style={{
+            justifyContent: layoutOverflow ? "center" : undefined
+          }}
+        >
+          {!layoutOverflow && (
+            <PlayerInfo
+              player={player1}
+              style={{
+                marginRight: "2em"
+              }}
+            />
+          )}
           <div className="performance">
             {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
           </div>
-          <PlayerInfo
-            player={player2}
-            style={{
-              marginLeft: "2em"
-            }}
-          />
+          {!layoutOverflow && (
+            <PlayerInfo
+              player={player2}
+              style={{
+                marginLeft: "2em"
+              }}
+            />
+          )}
         </div>
+
+        {layoutOverflow && (
+          <div className="combine">
+            <PlayerInfo
+              player={player1}
+              style={{
+                marginRight: "2em"
+              }}
+            />
+
+            <PlayerInfo
+              player={player2}
+              style={{
+                marginLeft: "2em"
+              }}
+            />
+          </div>
+        )}
       </div>
     );
   }
