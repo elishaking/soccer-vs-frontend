@@ -33,6 +33,10 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     });
   }
 
+  componentWillMount() {
+    window.removeEventListener("resize", () => {});
+  }
+
   onChange = (e: any) => {
     this.setState({
       player1Name: e.target.value
@@ -82,8 +86,6 @@ export default class Home extends Component<any, Readonly<HomeState>> {
           />
         </header>
 
-        <PlayerInfo player={player1} />
-
         <div className="vs">
           <div className="left">
             <h1>{player1.name}</h1>
@@ -104,8 +106,12 @@ export default class Home extends Component<any, Readonly<HomeState>> {
           </div>
         </div>
 
-        <div className="performance">
-          {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
+        <div className="combine">
+          <PlayerInfo player={player1} />
+          <div className="performance">
+            {this.renderPerformance(player1.mainDetails, player2.mainDetails)}
+          </div>
+          <PlayerInfo player={player2} />
         </div>
       </div>
     );
