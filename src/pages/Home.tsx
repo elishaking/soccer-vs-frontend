@@ -51,9 +51,15 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     window.removeEventListener("resize", () => {});
   }
 
-  onChange = (e: any) => {
+  onChange1 = (e: any) => {
     this.setState({
       player1Name: e.target.value
+    });
+  };
+
+  onChange2 = (e: any) => {
+    this.setState({
+      player2Name: e.target.value
     });
   };
 
@@ -85,7 +91,8 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     this.setState({ loadingPlayer1: true });
 
     searchPlayer(this.state.player1Name).then(player => {
-      if (player) this.setState({ player1: player });
+      if (player)
+        this.setState({ player1: player, resize: this.state.resize + 1 });
 
       this.setState({ loadingPlayer1: false });
     });
@@ -97,7 +104,8 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     this.setState({ loadingPlayer2: true });
 
     searchPlayer(this.state.player2Name).then(player => {
-      if (player) this.setState({ player2: player });
+      if (player)
+        this.setState({ player2: player, resize: this.state.resize + 1 });
 
       this.setState({ loadingPlayer2: false });
     });
@@ -114,7 +122,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
               type="text"
               name="player1Name"
               placeholder="Ronaldo"
-              onChange={this.onChange}
+              onChange={this.onChange1}
             />
           </form>
 
@@ -123,7 +131,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
               type="text"
               name="player2Name"
               placeholder="Messi"
-              onChange={this.onChange}
+              onChange={this.onChange2}
             />
           </form>
         </header>
