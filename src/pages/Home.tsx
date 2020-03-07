@@ -7,12 +7,15 @@ import { TextInput } from "../components/Inputs";
 import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
 import PerformanceBar from "../components/PerformanceBar";
 import PlayerInfo from "../components/PlayerInfo";
+import { searchPlayer } from "../api/search";
 
 interface HomeState {
   player1Name: string;
   player2Name: string;
   player1: Player | undefined;
   player2: Player | undefined;
+  loadingPlayer1: boolean;
+  loadingPlayer2: boolean;
   resize: number;
   layoutOverflow: boolean;
 }
@@ -23,6 +26,8 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     player2Name: "",
     player1: undefined,
     player2: undefined,
+    loadingPlayer1: false,
+    loadingPlayer2: false,
     resize: Number.MIN_SAFE_INTEGER,
     layoutOverflow: false
   };
@@ -74,25 +79,53 @@ export default class Home extends Component<any, Readonly<HomeState>> {
     });
   };
 
+  onSubmit1 = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    this.setState({ loadingPlayer1: true });
+
+    searchPlayer(this.state.player1Name).then(player => {
+      if (player) this.setState({ player1: player });
+
+      this.setState({ loadingPlayer1: false });
+    });
+  };
+
+  onSubmit2 = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    this.setState({ loadingPlayer2: true });
+
+    searchPlayer(this.state.player2Name).then(player => {
+      if (player) this.setState({ player2: player });
+
+      this.setState({ loadingPlayer2: false });
+    });
+  };
+
   render() {
     const { player1 = Ronaldo, player2 = Messi, layoutOverflow } = this.state;
 
     return (
       <div className="home">
         <header>
-          <TextInput
-            type="text"
-            name="player1Name"
-            placeholder="Ronaldo"
-            onChange={this.onChange}
-          />
+          <form onSubmit={this.onSubmit1}>
+            <TextInput
+              type="text"
+              name="player1Name"
+              placeholder="Ronaldo"
+              onChange={this.onChange}
+            />
+          </form>
 
-          <TextInput
-            type="text"
-            name="player2Name"
-            placeholder="Messi"
-            onChange={this.onChange}
-          />
+          <form onSubmit={this.onSubmit2}>
+            <TextInput
+              type="text"
+              name="player2Name"
+              placeholder="Messi"
+              onChange={this.onChange}
+            />
+          </form>
         </header>
 
         <div className="vs">
