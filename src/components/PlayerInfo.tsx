@@ -26,14 +26,14 @@ export default function PlayerInfo({ player }: PlayerInfoProps) {
       <div className="info">
         <h3>WEIGHT</h3>
         <h2>
-          {player.weight} <span>kg</span>
+          {player.moreInfo.weight} <span>kg</span>
         </h2>
       </div>
 
       <div className="info">
         <h3>HEIGHT</h3>
         <h2>
-          {player.height} <span>cm</span>
+          {player.moreInfo.height} <span>cm</span>
         </h2>
       </div>
 

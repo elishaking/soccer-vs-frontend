@@ -16,16 +16,20 @@ export default interface Player {
     imageUrl: string;
   };
   headshot: string;
+  birthdate: string;
+  moreInfo: PlayerInfo;
+  mainDetails: PlayerPerformance;
+  gk: any;
+  more: any;
+}
+
+export interface PlayerInfo {
   position: string;
   positionFull: string;
   height: number;
   weight: number;
-  birthdate: string;
   foot: string;
   rating: number;
-  mainDetails: PlayerPerformance;
-  gk: any;
-  more: any;
 }
 
 export interface PlayerPerformance {
@@ -66,11 +70,15 @@ export const Ronaldo: Player = {
   },
   headshot:
     "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/portraits/20801.png",
-  position: "ST",
-  height: 187,
-  weight: 83,
   birthdate: "02/05/1985",
-  foot: "Right",
+  moreInfo: {
+    position: "ST",
+    height: 187,
+    weight: 83,
+    foot: "Right",
+    positionFull: "Striker",
+    rating: 99
+  },
   mainDetails: {
     acceleration: 95,
     aggression: 75,
@@ -84,13 +92,6 @@ export const Ronaldo: Player = {
     freekickaccuracy: 89,
     composure: 99,
     skillMoves: 5
-  },
-  gk: {
-    gkdiving: 7,
-    gkhandling: 11,
-    gkkicking: 15,
-    gkpositioning: 14,
-    gkreflexes: 11
   },
   more: {
     headingaccuracy: 99,
@@ -114,9 +115,14 @@ export const Ronaldo: Player = {
     volleys: 92,
     weakFoot: 4
   },
-  name: "Cristiano Ronaldo",
-  positionFull: "Striker",
-  rating: 99
+  gk: {
+    gkdiving: 7,
+    gkhandling: 11,
+    gkkicking: 15,
+    gkpositioning: 14,
+    gkreflexes: 11
+  },
+  name: "Cristiano Ronaldo"
 };
 
 export const Messi: Player = {
@@ -141,11 +147,7 @@ export const Messi: Player = {
   },
   headshot:
     "https://www.easports.com/fifa/ultimate-team/web-app/content/7D49A6B1-760B-4491-B10C-167FBC81D58A/2019/fut/items/images/mobile/portraits/158023.png",
-  position: "CF",
-  height: 170,
-  weight: 72,
   birthdate: "06/24/1987",
-  foot: "Left",
   mainDetails: {
     acceleration: 99,
     aggression: 66,
@@ -160,12 +162,13 @@ export const Messi: Player = {
     composure: 99,
     skillMoves: 4
   },
-  gk: {
-    gkdiving: 6,
-    gkhandling: 11,
-    gkkicking: 15,
-    gkpositioning: 14,
-    gkreflexes: 8
+  moreInfo: {
+    positionFull: "Centre Forward",
+    rating: 99,
+    position: "CF",
+    height: 170,
+    weight: 72,
+    foot: "Left"
   },
   more: {
     headingaccuracy: 98,
@@ -189,9 +192,14 @@ export const Messi: Player = {
     volleys: 93,
     weakFoot: 4
   },
-  name: "Messi",
-  positionFull: "Centre Forward",
-  rating: 99
+  gk: {
+    gkdiving: 6,
+    gkhandling: 11,
+    gkkicking: 15,
+    gkpositioning: 14,
+    gkreflexes: 8
+  },
+  name: "Messi"
 };
 
 /**
@@ -218,11 +226,15 @@ export function convertDataToPlayer(data: any[]) {
         name: player.club.name
       },
       headshot: player.headshot.imgUrl,
-      position: player.position,
-      height: player.height,
-      weight: player.weight,
       birthdate: player.birthdate,
-      foot: player.foot,
+      moreInfo: {
+        positionFull: player.positionFull,
+        rating: player.rating,
+        foot: player.foot,
+        position: player.position,
+        height: player.height,
+        weight: player.weight
+      },
       mainDetails: {
         acceleration: player.acceleration,
         aggression: player.aggression,
@@ -236,13 +248,6 @@ export function convertDataToPlayer(data: any[]) {
         freekickaccuracy: player.freekickaccuracy,
         composure: player.composure,
         skillMoves: player.skillMoves
-      },
-      gk: {
-        gkdiving: player.gkdiving,
-        gkhandling: player.gkhandling,
-        gkkicking: player.gkkicking,
-        gkpositioning: player.gkpositioning,
-        gkreflexes: player.gkreflexes
       },
       more: {
         headingaccuracy: player.headingaccuracy,
@@ -266,9 +271,14 @@ export function convertDataToPlayer(data: any[]) {
         volleys: player.volleys,
         weakFoot: player.weakFoot
       },
-      name: player.name,
-      positionFull: player.positionFull,
-      rating: player.rating
+      gk: {
+        gkdiving: player.gkdiving,
+        gkhandling: player.gkhandling,
+        gkkicking: player.gkkicking,
+        gkpositioning: player.gkpositioning,
+        gkreflexes: player.gkreflexes
+      },
+      name: player.name
     };
   });
 
