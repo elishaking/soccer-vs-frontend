@@ -1,6 +1,11 @@
-.spinner {
-  font-size: 2.7em;
-  animation: loading 0.7s linear infinite forwards;
+.spinner-container {
+  display: inline-block;
+  margin-left: 1em;
+
+  .spinner {
+    font-size: 2.7em;
+    animation: loading 0.7s linear infinite forwards;
+  }
 }
 
 @keyframes loading {

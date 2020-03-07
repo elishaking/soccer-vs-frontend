@@ -1,15 +1,13 @@
 import React from "react";
 import "./Spinner.scss";
 
-export default function Spinner({ full = true, padding = true }) {
+interface SpinnerProps {
+  style?: React.CSSProperties;
+}
+
+export default function Spinner({ style }: SpinnerProps) {
   return (
-    <div
-      style={{
-        display: full ? "block" : "inline-block",
-        textAlign: "center",
-        padding: padding ? "1em" : "0"
-      }}
-    >
+    <div style={style} className="spinner-container">
       {/* <img src="./assets/img/spinner.gif" alt="" srcSet="" style={{
         maxHeight: "4vh"
       }} /> */}

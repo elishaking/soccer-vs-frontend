@@ -8,6 +8,7 @@ import Player, { Ronaldo, Messi, PlayerPerformance } from "../models/player";
 import PerformanceBar from "../components/PerformanceBar";
 import PlayerInfo from "../components/PlayerInfo";
 import { searchPlayer } from "../api/search";
+import Spinner from "../components/Spinner";
 
 interface HomeState {
   player1Name: string;
@@ -112,27 +113,35 @@ export default class Home extends Component<any, Readonly<HomeState>> {
   };
 
   render() {
-    const { player1 = Ronaldo, player2 = Messi, layoutOverflow } = this.state;
+    const {
+      player1 = Ronaldo,
+      player2 = Messi,
+      layoutOverflow,
+      loadingPlayer1,
+      loadingPlayer2
+    } = this.state;
 
     return (
       <div className="home">
         <header>
-          <form onSubmit={this.onSubmit1}>
+          <form className="form" onSubmit={this.onSubmit1}>
             <TextInput
               type="text"
               name="player1Name"
               placeholder="Ronaldo"
               onChange={this.onChange1}
             />
+            {loadingPlayer1 && <Spinner />}
           </form>
 
-          <form onSubmit={this.onSubmit2}>
+          <form className="form" onSubmit={this.onSubmit2}>
             <TextInput
               type="text"
               name="player2Name"
               placeholder="Messi"
               onChange={this.onChange2}
             />
+            {loadingPlayer2 && <Spinner />}
           </form>
         </header>
 
