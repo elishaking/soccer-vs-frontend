@@ -1,0 +1,172 @@
+.home {
+  // height: 100vh;
+  padding: 3em 10vw;
+  background-color: #9236d9;
+  background-image: url(../assets/img/stadium.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  //   background-blend-mode: overlay;
+  background-blend-mode: soft-light;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+
+    .form {
+      display: flex;
+
+      input {
+        width: 50vw;
+        max-width: 300px;
+      }
+    }
+  }
+
+  .vs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+
+    h1,
+    h3 {
+      color: white;
+    }
+
+    h1 {
+      font-size: 230%;
+      font-weight: 900;
+
+      span {
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        padding: 0.3em 0.7em;
+        border-radius: 40px;
+        display: inline-block;
+      }
+    }
+
+    h3 {
+      opacity: 0.7;
+      font-weight: lighter;
+    }
+
+    .left,
+    .right {
+      width: 40vw;
+    }
+
+    .right {
+      text-align: end;
+
+      .club {
+        justify-content: flex-end;
+      }
+    }
+
+    .club {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        margin: 0 1em;
+      }
+
+      img {
+        height: 70px;
+      }
+    }
+  }
+
+  .combine {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .performance {
+    text-align: center;
+    color: white;
+
+    .score {
+      margin-bottom: 2em;
+
+      .values {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .performance-bar {
+          margin: 0 0.3em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .home {
+    header {
+      .form {
+        input {
+          width: 50vw;
+          max-width: 200px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .home {
+    .vs {
+      flex-direction: column;
+      align-items: center;
+
+      .right,
+      .left {
+        text-align: center;
+        width: 90vw;
+
+        .club {
+          justify-content: center;
+        }
+      }
+
+      .left {
+        margin-bottom: 2em;
+      }
+
+      .right .club {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}
+
+@media (max-width: 620px) {
+  .home {
+    header {
+      flex-direction: column;
+
+      .form {
+        margin-bottom: 1em;
+        input {
+          width: 80vw;
+          max-width: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 490px) {
+  .home {
+    .combine-small {
+      flex-direction: column;
+
+      .player-info {
+        margin: 0 auto 2em auto !important;
+      }
+    }
+  }
+}

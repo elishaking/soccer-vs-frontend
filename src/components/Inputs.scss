@@ -1,0 +1,15 @@
+input.text-input {
+  padding: 0.7em 1em;
+  //   border: 1px solid;
+  background-color: #491aae;
+  color: white;
+  border: none;
+  border-radius: 30em;
+  outline: none;
+  font-family: inherit;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.77;
+}
