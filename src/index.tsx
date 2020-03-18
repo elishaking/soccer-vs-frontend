@@ -1,8 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import * as Sentry from "@sentry/browser";
+
 import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+
+Sentry.init({
+  dsn: "https://f8884243768e4c878bb294828597395f@sentry.io/5133986"
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
