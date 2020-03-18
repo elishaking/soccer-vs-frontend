@@ -147,7 +147,9 @@ export default class Home extends Component<any, Readonly<HomeState>> {
 
         <div className="vs">
           <div className="left">
-            <h1>{player1.name}</h1>
+            <h1>
+              <span style={{ color: "#d43861" }}>{player1.name}</span>
+            </h1>
             <div className="club">
               <img src={player1.club.imageUrl} alt="Club" />
               <h3>{player1.club.name}</h3>
@@ -156,7 +158,9 @@ export default class Home extends Component<any, Readonly<HomeState>> {
           </div>
 
           <div className="right">
-            <h1>{player2.name}</h1>
+            <h1>
+              <span style={{ color: "#b6a6ec" }}>{player2.name}</span>
+            </h1>
             <div className="club">
               <h3>{player2.club.name}</h3>
               <img src={player2.club.imageUrl} alt="Club" />
