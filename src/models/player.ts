@@ -31,6 +31,7 @@ export interface PlayerInfo {
   weight: number;
   foot: string;
   rating: number;
+  skillMoves: number;
 }
 
 export interface PlayerPerformance {
@@ -40,7 +41,6 @@ export interface PlayerPerformance {
   agility: number;
   balance: number;
   ballcontrol: number;
-  skillMoves: number;
   crossing: number;
   curve: number;
   dribbling: number;
@@ -78,7 +78,8 @@ export const Ronaldo: Player = {
     weight: 83,
     foot: "Right",
     positionFull: "Striker",
-    rating: 99
+    rating: 99,
+    skillMoves: 5
   },
   mainDetails: {
     acceleration: 95,
@@ -91,8 +92,7 @@ export const Ronaldo: Player = {
     dribbling: 95,
     finishing: 99,
     freekickaccuracy: 89,
-    composure: 99,
-    skillMoves: 5
+    composure: 99
   },
   more: {
     headingaccuracy: 99,
@@ -160,8 +160,7 @@ export const Messi: Player = {
     dribbling: 99,
     finishing: 99,
     freekickaccuracy: 99,
-    composure: 99,
-    skillMoves: 4
+    composure: 99
   },
   moreInfo: {
     position: "CF",
@@ -169,7 +168,8 @@ export const Messi: Player = {
     weight: 72,
     foot: "Left",
     positionFull: "Centre Forward",
-    rating: 99
+    rating: 99,
+    skillMoves: 4
   },
   more: {
     headingaccuracy: 98,
@@ -234,7 +234,8 @@ export function convertDataToPlayer(data: any[]) {
         foot: player.foot,
         position: player.position,
         height: player.height,
-        weight: player.weight
+        weight: player.weight,
+        skillMoves: player.skillMoves
       },
       mainDetails: {
         acceleration: player.acceleration,
@@ -247,8 +248,7 @@ export function convertDataToPlayer(data: any[]) {
         dribbling: player.dribbling,
         finishing: player.finishing,
         freekickaccuracy: player.freekickaccuracy,
-        composure: player.composure,
-        skillMoves: player.skillMoves
+        composure: player.composure
       },
       more: {
         headingaccuracy: player.headingaccuracy,
