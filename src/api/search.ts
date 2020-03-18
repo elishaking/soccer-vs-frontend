@@ -1,5 +1,6 @@
 import axios from "axios";
 import { convertDataToPlayer } from "../models/player";
+import logError from "../utils/logger";
 
 /**
  * Search for `Player` with the specified `playerName`
@@ -15,8 +16,9 @@ export const searchPlayer = async (playerName: string) => {
     ).data.data;
     const player = convertDataToPlayer([data])[0];
     return player;
-  } catch (e) {
+  } catch (err) {
     // todo
+    logError(err);
     return undefined;
   }
 };
