@@ -193,7 +193,7 @@ export default class Home extends Component<any, Readonly<HomeState>> {
         </div>
 
         {layoutOverflow && (
-          <div className="combine">
+          <div className="combine combine-small">
             <PlayerInfo
               player={player1}
               style={{
